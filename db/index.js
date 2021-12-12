@@ -1,6 +1,6 @@
 const { Client } = require('pg') // imports the pg module
 
-const client = new Client('postgres://localhost:5432/juicebox-dev');
+const client = new Client(process.env.DATABASE_URL || 'postgres://localhost:5432/juicebox-dev');
 
 /**
  * USER Methods
@@ -195,7 +195,7 @@ async function getPostById(postId) {
       FROM posts
       WHERE id=$1;
     `, [postId]);
-    
+
     // THIS IS NEW
     if (!post) {
       throw {
