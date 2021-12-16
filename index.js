@@ -20,8 +20,8 @@ server.use((req, res, next) => {
 const apiRouter = require('./api');
 server.use('/api', apiRouter);
 
-// const { client } = require('./db');
-// client.connect();
+const { client } = require('./db');
+client.connect();
 
 
 server.listen(PORT, () => {
