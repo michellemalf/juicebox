@@ -2,6 +2,7 @@
 const express = require('express');
 const postsRouter = express.Router();
 
+const { requireUser } = require('./utils');
 
 // NEW
 const { 
@@ -12,8 +13,6 @@ const {
 } = require('../db');
 
 const { post } = require('./users');
-
-const { requireUser } = require('./utils');
 
 postsRouter.post('/', requireUser, async (req, res, next) => {
     const { title, content, tags = "" } = req.body;
